@@ -445,7 +445,7 @@ export default function AdminExperiencePage() {
             <div className="space-y-2">
               <Label>Company Logo</Label>
               <ImageUpload
-                bucket="company-logos"
+                bucket="site-assets"
                 path="logos"
                 currentImage={form.watch("company_logo")}
                 onUpload={(url) => form.setValue("company_logo", url)}

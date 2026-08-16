@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/sections/hero";
 import { AboutSection } from "@/components/sections/about";
 import { SkillsSection } from "@/components/sections/skills";
 import { ExperienceSection } from "@/components/sections/experience";
+import { EducationSection } from "@/components/sections/education";
 import { CertificationsSection } from "@/components/sections/certifications";
 import { ProjectsSection } from "@/components/sections/projects";
 import { ServicesSection } from "@/components/sections/services";
@@ -19,6 +20,7 @@ export default async function HomePage() {
     profileRes,
     skillsRes,
     experiencesRes,
+    educationRes,
     projectsRes,
     servicesRes,
     certificationsRes,
@@ -27,6 +29,7 @@ export default async function HomePage() {
     supabase.from("profiles").select("*").single(),
     supabase.from("skills").select("*").eq("is_published", true).order("display_order"),
     supabase.from("experiences").select("*").eq("is_published", true).order("display_order"),
+    supabase.from("education").select("*").eq("is_published", true).order("display_order"),
     supabase.from("projects").select("*").eq("is_published", true).order("display_order"),
     supabase.from("services").select("*").eq("is_published", true).order("display_order"),
     supabase.from("certifications").select("*").eq("is_published", true).order("display_order"),
@@ -36,6 +39,7 @@ export default async function HomePage() {
   const profile = profileRes.data;
   const skills = skillsRes.data ?? [];
   const experiences = experiencesRes.data ?? [];
+  const education = educationRes.data ?? [];
   const projects = projectsRes.data ?? [];
   const services = servicesRes.data ?? [];
   const certifications = certificationsRes.data ?? [];
@@ -44,6 +48,7 @@ export default async function HomePage() {
   const stats = {
     skills: skills.length,
     experience: experiences.length,
+    education: education.length,
     certifications: certifications.length,
     projects: projects.length,
   };
@@ -57,6 +62,7 @@ export default async function HomePage() {
           <AboutSection profile={profile} stats={stats} />
           <SkillsSection skills={skills} />
           <ExperienceSection experiences={experiences} />
+          <EducationSection education={education} />
           <CertificationsSection certifications={certifications} />
           <ProjectsSection projects={projects} />
           <ServicesSection services={services} />

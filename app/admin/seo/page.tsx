@@ -207,7 +207,7 @@ export default function AdminSeoPage() {
                   <div className="space-y-2">
                     <Label>OG Image (Open Graph)</Label>
                     <ImageUpload
-                      bucket="og-images"
+                      bucket="site-assets"
                       path={page}
                       currentImage={form.watch("og_image")}
                       onUpload={(url) => form.setValue("og_image", url)}

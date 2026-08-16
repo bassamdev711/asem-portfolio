@@ -19,6 +19,7 @@ const navLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
+  { href: "#education", label: "Education" },
   { href: "#certifications", label: "Certifications" },
   { href: "#projects", label: "Projects" },
   { href: "#services", label: "Services" },
@@ -130,10 +131,10 @@ export function Navigation() {
               className="hidden md:flex gap-2"
               asChild
             >
-              <a href="/cv.pdf" download>
+              <Link href="/cv">
                 <Download className="h-4 w-4" />
                 Download CV
-              </a>
+              </Link>
             </Button>
 
             <Button
@@ -172,10 +173,10 @@ export function Navigation() {
                 </button>
               ))}
               <Button variant="outline" size="sm" className="mt-2 gap-2" asChild>
-                <a href="/cv.pdf" download>
+                <Link href="/cv">
                   <Download className="h-4 w-4" />
                   Download CV
-                </a>
+                </Link>
               </Button>
             </nav>
           </motion.div>

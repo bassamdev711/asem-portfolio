@@ -1,7 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  Heart,
+  Facebook,
+  Instagram,
+  Youtube,
+  Globe,
+  MessageCircle,
+  Send,
+} from "lucide-react";
 
 interface FooterProps {
   profile: any;
@@ -9,10 +21,27 @@ interface FooterProps {
 }
 
 const socialIcons: Record<string, any> = {
+  GitHub: Github,
   github: Github,
+  LinkedIn: Linkedin,
   linkedin: Linkedin,
+  X: Twitter,
+  Twitter: Twitter,
   twitter: Twitter,
+  Email: Mail,
   email: Mail,
+  Facebook: Facebook,
+  facebook: Facebook,
+  Instagram: Instagram,
+  instagram: Instagram,
+  YouTube: Youtube,
+  youtube: Youtube,
+  WhatsApp: MessageCircle,
+  whatsapp: MessageCircle,
+  Telegram: Send,
+  telegram: Send,
+  Website: Globe,
+  website: Globe,
 };
 
 const navLinks = [
@@ -20,6 +49,7 @@ const navLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
+  { href: "#education", label: "Education" },
   { href: "#projects", label: "Projects" },
   { href: "#services", label: "Services" },
   { href: "#contact", label: "Contact" },

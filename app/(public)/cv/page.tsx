@@ -1,11 +1,8 @@
 import { Metadata } from "next";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  Download,
-  Printer,
   Mail,
   Phone,
   MapPin,
@@ -16,6 +13,7 @@ import {
   FolderGit2,
 } from "lucide-react";
 import { generatePageMetadata } from "@/lib/seo";
+import { CVActions } from "@/components/cv/cv-actions";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "CV",
@@ -27,7 +25,7 @@ export const metadata: Metadata = generatePageMetadata({
 export default async function CVPage() {
   const supabase = await createServerSupabaseClient();
 
-  const [profileRes, skillsRes, experiencesRes, certificationsRes, educationRes, projectsRes] =
+  const [profileRes, skillsRes, experiencesRes, certificationsRes, educationRes, projectsRes, socialLinksRes] =
     await Promise.all([
       supabase.from("profiles").select("*").single(),
       supabase.from("skills").select("*").eq("is_published", true).order("display_order"),
@@ -52,6 +50,11 @@ export default async function CVPage() {
         .eq("is_published", true)
         .eq("is_featured", true)
         .order("display_order"),
+      supabase
+        .from("social_links")
+        .select("*")
+        .eq("is_published", true)
+        .order("display_order"),
     ]);
 
   const profile = profileRes.data;
@@ -60,6 +63,7 @@ export default async function CVPage() {
   const certifications = certificationsRes.data ?? [];
   const education = educationRes.data ?? [];
   const featuredProjects = projectsRes.data ?? [];
+  const socialLinks = socialLinksRes.data ?? [];
 
   const groupedSkills = skills.reduce(
     (acc: Record<string, typeof skills>, skill) => {
@@ -88,23 +92,18 @@ export default async function CVPage() {
               Curriculum <span className="gradient-text">Vitae</span>
             </h1>
             <p className="text-muted-foreground">
-              Use Ctrl+P (or Cmd+P) to print or save as PDF.
+              Download as PDF or use Ctrl+P (Cmd+P) to print.
             </p>
           </div>
-          <div className="flex gap-2">
-            {profile?.cv_file_url && (
-              <Button asChild variant="outline">
-                <a href={profile.cv_file_url} download>
-                  <Download className="h-4 w-4 mr-2" />
-                  Download CV
-                </a>
-              </Button>
-            )}
-            <Button variant="outline" onClick={() => window.print()}>
-              <Printer className="h-4 w-4 mr-2" />
-              Print
-            </Button>
-          </div>
+          <CVActions
+            profile={profile}
+            skills={skills}
+            experiences={experiences}
+            education={education}
+            certifications={certifications}
+            featuredProjects={featuredProjects}
+            socialLinks={socialLinks}
+          />
         </div>
 
         <div className="print:text-black print:bg-white space-y-10">

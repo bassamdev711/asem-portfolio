@@ -384,7 +384,7 @@ export default function AdminCertificationsPage() {
             <div className="space-y-2">
               <Label>Certificate Image</Label>
               <ImageUpload
-                bucket="certification-images"
+                bucket="certificates"
                 path="certs"
                 currentImage={form.watch("certificate_image")}
                 onUpload={(url) => form.setValue("certificate_image", url)}

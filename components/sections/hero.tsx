@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Twitter, Mail, Facebook, Instagram, Youtube, Globe, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -28,10 +28,27 @@ const item = {
 };
 
 const socialIcons: Record<string, any> = {
+  GitHub: Github,
   github: Github,
+  LinkedIn: Linkedin,
   linkedin: Linkedin,
+  X: Twitter,
+  Twitter: Twitter,
   twitter: Twitter,
+  Email: Mail,
   email: Mail,
+  Facebook: Facebook,
+  facebook: Facebook,
+  Instagram: Instagram,
+  instagram: Instagram,
+  YouTube: Youtube,
+  youtube: Youtube,
+  WhatsApp: MessageCircle,
+  whatsapp: MessageCircle,
+  Telegram: Send,
+  telegram: Send,
+  Website: Globe,
+  website: Globe,
 };
 
 function FloatingOrb({ delay, size, x, y }: { delay: number; size: number; x: string; y: string }) {
