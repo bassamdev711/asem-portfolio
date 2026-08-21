@@ -1,293 +1,58 @@
 import { Metadata } from "next";
 import { staticCertifications, staticEducation, staticExperiences, staticProfile, staticProjects, staticSkills, staticSocialLinks } from "@/lib/static-data";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  ExternalLink,
-  GraduationCap,
-  Briefcase,
-  Award,
-  FolderGit2,
-} from "lucide-react";
+import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { generatePageMetadata } from "@/lib/seo";
 import { CVActions } from "@/components/cv/cv-actions";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "CV",
-  description:
-    "Download my professional CV or view my qualifications, experience, education, and certifications.",
+  description: "Download or print Asem Al-Manari's professional CV, experience, education, certifications, skills, and selected projects.",
   path: "/cv",
 });
 
 export default function CVPage() {
   const profile = staticProfile;
-  const skills = staticSkills;
-  const experiences = staticExperiences;
-  const certifications = staticCertifications;
-  const education = staticEducation;
+  const groupedSkills = staticSkills.reduce<Record<string, typeof staticSkills>>((acc, skill) => {
+    const category = skill.category || "Other";
+    if (!acc[category]) acc[category] = [];
+    acc[category].push(skill);
+    return acc;
+  }, {});
   const featuredProjects = staticProjects.filter((project) => project.is_featured);
-  const socialLinks = staticSocialLinks;
-
-  const groupedSkills = skills.reduce(
-    (acc: Record<string, typeof skills>, skill) => {
-      const cat = skill.category || "Other";
-      if (!acc[cat]) acc[cat] = [];
-      acc[cat].push(skill);
-      return acc;
-    },
-    {}
-  );
-
-  const formatDate = (dateStr: string | null) => {
-    if (!dateStr) return "Present";
-    return new Date(dateStr).toLocaleDateString("en-US", {
-      month: "short",
-      year: "numeric",
-    });
-  };
+  const formatDate = (date: string | null) => date ? new Date(date).toLocaleDateString("en-US", { month: "short", year: "numeric" }) : "Present";
 
   return (
-    <section className="py-20 print:py-0">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10 print:hidden">
-          <div>
-            <h1 className="text-4xl font-bold mb-2">
-              Curriculum <span className="gradient-text">Vitae</span>
-            </h1>
-            <p className="text-muted-foreground">
-              Download as PDF or use Ctrl+P (Cmd+P) to print.
-            </p>
-          </div>
-          <CVActions
-            profile={profile}
-            skills={skills}
-            experiences={experiences}
-            education={education}
-            certifications={certifications}
-            featuredProjects={featuredProjects}
-            socialLinks={socialLinks}
-          />
-        </div>
+    <main className="technical-cv-page">
+      <div className="technical-frame technical-cv-frame">
+        <header className="technical-cv-toolbar print:hidden">
+          <div><p className="technical-eyebrow"><span className="technical-eyebrow-line" /> Professional record</p><h1>Curriculum <span>Vitae</span></h1><p>Review the full record or export it for print and applications.</p></div>
+          <CVActions profile={profile} skills={staticSkills} experiences={staticExperiences} education={staticEducation} certifications={staticCertifications} featuredProjects={featuredProjects} socialLinks={staticSocialLinks} />
+        </header>
 
-        <div className="print:text-black print:bg-white space-y-10">
-          <header className="text-center pb-8 border-b">
-            {profile?.profile_image && (
-              <img
-                src={profile.profile_image}
-                alt={profile.full_name}
-                className="h-24 w-24 rounded-full mx-auto mb-4 object-cover print:h-16 print:w-16"
-              />
-            )}
-            <h1 className="text-3xl font-bold mb-1">
-              {profile?.full_name || "Your Name"}
-            </h1>
-            <p className="text-lg text-muted-foreground mb-4">
-              {profile?.professional_title || "Professional Title"}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-              {profile?.email && (
-                <span className="flex items-center gap-1">
-                  <Mail className="h-3.5 w-3.5" />
-                  {profile.email}
-                </span>
-              )}
-              {profile?.phone && (
-                <span className="flex items-center gap-1">
-                  <Phone className="h-3.5 w-3.5" />
-                  {profile.phone}
-                </span>
-              )}
-              {profile?.location && (
-                <span className="flex items-center gap-1">
-                  <MapPin className="h-3.5 w-3.5" />
-                  {profile.location}
-                </span>
-              )}
-            </div>
+        <article className="technical-cv-sheet print:text-black print:bg-white">
+          <header className="technical-cv-identity">
+            <div className="technical-cv-portrait">{profile.profile_image && <img src={profile.profile_image} alt={profile.full_name} />}</div>
+            <div className="technical-cv-name"><p className="technical-cv-kicker">AM / Technical portfolio</p><h2>{profile.full_name}</h2><p className="technical-cv-title">{profile.professional_title}</p><div className="technical-cv-contact">{profile.email && <span><Mail size={14} />{profile.email}</span>}{profile.phone && <span><Phone size={14} />{profile.phone}</span>}{profile.location && <span><MapPin size={14} />{profile.location}</span>}</div></div>
+            <div className="technical-cv-index"><span>CV</span><strong>2026</strong><small>IT / SYSTEMS<br />MOBILE / WEB</small></div>
           </header>
 
-          {profile?.about && (
-            <section>
-              <h2 className="text-xl font-bold border-b pb-2 mb-4 flex items-center gap-2">
-                Professional Summary
-              </h2>
-              <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
-                {profile.about}
-              </p>
-            </section>
-          )}
+          {profile.about && <CVSection number="01" label="Profile"><h3>Professional Summary</h3><p>{profile.about}</p></CVSection>}
 
-          {Object.keys(groupedSkills).length > 0 && (
-            <section>
-              <h2 className="text-xl font-bold border-b pb-2 mb-4">Skills</h2>
-              <div className="space-y-3">
-                {Object.entries(groupedSkills).map(([category, catSkills]) => (
-                  <div key={category}>
-                    <h3 className="font-semibold text-sm mb-2">{category}</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {catSkills.map((skill) => (
-                        <Badge key={skill.id} variant="secondary" className="text-xs">
-                          {skill.name}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+          <CVSection number="02" label="Technical range"><h3>Skills</h3><div className="technical-cv-skill-grid">{Object.entries(groupedSkills).map(([category, skills]) => <div key={category}><span className="technical-cv-label">{category}</span><strong>{skills.map((skill) => skill.name).join(" · ")}</strong><small>{skills.map((skill) => skill.description).join(" · ")}</small></div>)}</div></CVSection>
 
-          {experiences.length > 0 && (
-            <section>
-              <h2 className="text-xl font-bold border-b pb-2 mb-4 flex items-center gap-2">
-                <Briefcase className="h-5 w-5" />
-                Experience
-              </h2>
-              <div className="space-y-6">
-                {experiences.map((exp) => (
-                  <div key={exp.id}>
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-                      <h3 className="font-semibold">{exp.job_title}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {formatDate(exp.start_date)} –{" "}
-                        {exp.is_current ? "Present" : formatDate(exp.end_date)}
-                      </p>
-                    </div>
-                    <p className="text-sm text-primary mb-2">
-                      {exp.company}
-                      {exp.location && ` · ${exp.location}`}
-                    </p>
-                    {exp.description && (
-                      <p className="text-sm text-muted-foreground whitespace-pre-wrap">
-                        {exp.description}
-                      </p>
-                    )}
-                    {exp.responsibilities && (
-                      <p className="text-sm text-muted-foreground mt-1 whitespace-pre-wrap">
-                        {exp.responsibilities}
-                      </p>
-                    )}
-                    {exp.technologies && exp.technologies.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {(exp.technologies as string[]).map((tech: string) => (
-                          <Badge key={tech} variant="outline" className="text-xs">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+          <CVSection number="03" label="Professional history"><h3>Experience</h3><div className="technical-cv-timeline">{staticExperiences.map((experience) => <article key={experience.id}><div className="technical-cv-date">{formatDate(experience.start_date)} — {experience.is_current ? "Present" : formatDate(experience.end_date)}</div><div><h4>{experience.job_title}</h4><p className="technical-cv-company">{experience.company} · {experience.location}</p>{experience.description && <p>{experience.description}</p>}{experience.responsibilities && <p className="technical-cv-responsibility">{experience.responsibilities}</p>}<div className="technical-cv-tags">{experience.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div></div></article>)}</div></CVSection>
 
-          {education.length > 0 && (
-            <section>
-              <h2 className="text-xl font-bold border-b pb-2 mb-4 flex items-center gap-2">
-                <GraduationCap className="h-5 w-5" />
-                Education
-              </h2>
-              <div className="space-y-4">
-                {education.map((edu) => (
-                  <div key={edu.id}>
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-                      <h3 className="font-semibold">{edu.degree}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {formatDate(edu.start_date)} – {formatDate(edu.end_date)}
-                      </p>
-                    </div>
-                    <p className="text-sm text-primary mb-1">
-                      {edu.institution}
-                      {edu.location && ` · ${edu.location}`}
-                    </p>
-                    {edu.gpa && (
-                      <p className="text-sm text-muted-foreground">GPA: {edu.gpa}</p>
-                    )}
-                    {edu.description && (
-                      <p className="text-sm text-muted-foreground mt-1 whitespace-pre-wrap">
-                        {edu.description}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+          <div className="technical-cv-two-section"><CVSection number="04" label="Foundations"><h3>Education</h3>{staticEducation.map((education) => <article className="technical-cv-compact-item" key={education.id}><span>{formatDate(education.start_date)} — {formatDate(education.end_date)}</span><h4>{education.degree}</h4><p>{education.institution} · {education.location}</p><small>{education.description}</small></article>)}</CVSection><CVSection number="05" label="Credentials"><h3>Certifications</h3>{staticCertifications.map((certification) => <article className="technical-cv-compact-item" key={certification.id}><span>{formatDate(certification.issue_date)}</span><h4>{certification.name}</h4><p>{certification.issuing_organization}</p><small>{certification.description}</small>{certification.credential_url && <a href={certification.credential_url} target="_blank" rel="noreferrer">View credential <ExternalLink size={13} /></a>}</article>)}</CVSection></div>
 
-          {certifications.length > 0 && (
-            <section>
-              <h2 className="text-xl font-bold border-b pb-2 mb-4 flex items-center gap-2">
-                <Award className="h-5 w-5" />
-                Certifications
-              </h2>
-              <div className="space-y-3">
-                {certifications.map((cert) => (
-                  <div key={cert.id}>
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                      <h3 className="font-semibold">{cert.name}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {cert.issue_date
-                          ? formatDate(cert.issue_date)
-                          : ""}
-                      </p>
-                    </div>
-                    <p className="text-sm text-primary">{cert.issuing_organization}</p>
-                    {cert.credential_url && (
-                      <a
-                        href={cert.credential_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-primary hover:underline inline-flex items-center gap-1 mt-1"
-                      >
-                        View Credential <ExternalLink className="h-3 w-3" />
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+          <CVSection number="06" label="Selected proof"><h3>Featured Projects</h3><div className="technical-cv-projects">{featuredProjects.map((project) => <article key={project.id}><div><span className="technical-cv-label">{project.category} · {project.slug}</span><h4>{project.name}</h4></div><div><p>{project.short_description}</p><div className="technical-cv-tags">{project.technologies.slice(0, 8).map((technology) => <span key={technology}>{technology}</span>)}</div></div></article>)}</div></CVSection>
 
-          {featuredProjects.length > 0 && (
-            <section>
-              <h2 className="text-xl font-bold border-b pb-2 mb-4 flex items-center gap-2">
-                <FolderGit2 className="h-5 w-5" />
-                Featured Projects
-              </h2>
-              <div className="space-y-4">
-                {featuredProjects.map((proj) => (
-                  <div key={proj.id}>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold">{proj.name}</h3>
-                      <Badge variant="outline" className="text-xs">
-                        {proj.category}
-                      </Badge>
-                    </div>
-                    {proj.short_description && (
-                      <p className="text-sm text-muted-foreground">
-                        {proj.short_description}
-                      </p>
-                    )}
-                    {proj.technologies && proj.technologies.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mt-1">
-                        {(proj.technologies as string[]).slice(0, 8).map((tech: string) => (
-                          <Badge key={tech} variant="secondary" className="text-xs">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-        </div>
+          <footer className="technical-cv-footer"><span>Asem Al-Manari · {profile.email}</span><span>Technical portfolio / 2026</span></footer>
+        </article>
       </div>
-    </section>
+    </main>
   );
+}
+
+function CVSection({ number, label, children }: { number: string; label: string; children: React.ReactNode }) {
+  return <section className="technical-cv-section"><div className="technical-cv-section-label"><span>{number}</span>{label}</div><div className="technical-cv-section-content">{children}</div></section>;
 }

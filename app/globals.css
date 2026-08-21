@@ -429,3 +429,97 @@
   .technical-contact-content { padding: 3rem 0; }
   .technical-contact-links { align-items: flex-start; flex-direction: column; gap: 1rem; }
 }
+
+/* Technical CV and responsive ORA gallery */
+.technical-cv-page { min-height: 100vh; padding: 9rem 0 5rem; background: var(--tech-bg, #0a0d12); color: var(--tech-ink, #f0f3f7); }
+.technical-cv-frame { max-width: 1120px; }
+.technical-cv-toolbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding-bottom: 3rem; border-bottom: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-toolbar h1 { margin: 1rem 0 0.6rem; font-size: clamp(3rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.08em; }
+.technical-cv-toolbar h1 span { color: var(--tech-blue, #7fa9ff); }
+.technical-cv-toolbar > div > p:last-child { margin: 0; color: var(--tech-muted, #8d97a7); font-size: 0.86rem; }
+.technical-cv-toolbar > div:first-child { max-width: 580px; }
+.technical-cv-toolbar .cv-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.technical-cv-toolbar .cv-actions button { min-height: 38px; border: 1px solid var(--tech-line-strong, rgba(235,240,247,0.22)); border-radius: 0; color: var(--tech-ink, #f0f3f7); background: transparent; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.technical-cv-toolbar .cv-actions button:hover { border-color: var(--tech-blue, #7fa9ff); color: var(--tech-blue, #7fa9ff); background: rgba(127,169,255,0.06); }
+.technical-cv-sheet { margin-top: 3rem; border-top: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-identity { display: grid; grid-template-columns: 120px 1fr auto; align-items: center; gap: 1.75rem; padding: 2.4rem 0 2.6rem; border-bottom: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-portrait { width: 120px; height: 150px; overflow: hidden; border: 1px solid var(--tech-line-strong, rgba(235,240,247,0.22)); background: var(--tech-surface, #10151d); }
+.technical-cv-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: saturate(0.88) contrast(1.03); }
+.technical-cv-kicker, .technical-cv-section-label, .technical-cv-label, .technical-cv-date, .technical-cv-index, .technical-cv-footer { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.11em; }
+.technical-cv-kicker { margin: 0 0 0.75rem; color: var(--tech-blue, #7fa9ff); font-size: 0.58rem; }
+.technical-cv-name h2 { margin: 0; font-size: clamp(2.1rem, 5vw, 4.5rem); line-height: 0.95; letter-spacing: -0.08em; }
+.technical-cv-title { margin: 0.8rem 0 1rem; color: var(--tech-muted, #8d97a7); font-size: 0.9rem; }
+.technical-cv-contact { display: flex; flex-wrap: wrap; gap: 0.75rem 1.4rem; color: var(--tech-muted, #8d97a7); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.58rem; }
+.technical-cv-contact span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.technical-cv-index { display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; color: var(--tech-faint, #596273); font-size: 0.56rem; text-align: right; }
+.technical-cv-index strong { color: var(--tech-blue, #7fa9ff); font-size: 1.6rem; font-weight: 500; letter-spacing: -0.08em; }
+.technical-cv-index small { font-size: 0.48rem; line-height: 1.65; }
+.technical-cv-section { display: grid; grid-template-columns: 170px 1fr; gap: 2.5rem; padding: 2.35rem 0; border-bottom: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-section-label { display: flex; flex-direction: column; gap: 0.5rem; color: var(--tech-faint, #596273); font-size: 0.56rem; }
+.technical-cv-section-label span { color: var(--tech-blue, #7fa9ff); font-size: 0.7rem; }
+.technical-cv-section-content > h3 { margin: 0 0 1.25rem; font-size: 1.5rem; letter-spacing: -0.04em; }
+.technical-cv-section-content > p { max-width: 760px; margin: 0; color: var(--tech-muted, #8d97a7); font-size: 0.92rem; line-height: 1.85; }
+.technical-cv-skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem 1rem; }
+.technical-cv-skill-grid > div { display: flex; flex-direction: column; gap: 0.45rem; min-height: 95px; padding: 0.9rem 0.9rem 0.8rem 0; border-top: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-label { color: var(--tech-blue, #7fa9ff); font-size: 0.53rem; }
+.technical-cv-skill-grid strong { color: var(--tech-ink, #f0f3f7); font-size: 0.8rem; line-height: 1.45; }
+.technical-cv-skill-grid small { color: var(--tech-muted, #8d97a7); font-size: 0.68rem; line-height: 1.55; }
+.technical-cv-timeline { border-top: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-timeline article { display: grid; grid-template-columns: 150px 1fr; gap: 2rem; padding: 1.4rem 0; border-bottom: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-date { color: var(--tech-faint, #596273); font-size: 0.56rem; line-height: 1.6; }
+.technical-cv-timeline h4, .technical-cv-compact-item h4, .technical-cv-projects h4 { margin: 0; color: var(--tech-ink, #f0f3f7); font-size: 1rem; }
+.technical-cv-timeline p { max-width: 720px; margin: 0.55rem 0 0; color: var(--tech-muted, #8d97a7); font-size: 0.8rem; line-height: 1.7; }
+.technical-cv-company { color: var(--tech-blue, #7fa9ff) !important; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.61rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+.technical-cv-responsibility { color: var(--tech-ink, #f0f3f7) !important; }
+.technical-cv-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+.technical-cv-tags span { padding: 0.32rem 0.5rem; color: var(--tech-muted, #8d97a7); border: 1px solid var(--tech-line, rgba(235,240,247,0.12)); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.52rem; }
+.technical-cv-two-section { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; border-bottom: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-two-section > .technical-cv-section { display: block; border-bottom: 0; }
+.technical-cv-two-section > .technical-cv-section .technical-cv-section-label { margin-bottom: 1.8rem; }
+.technical-cv-compact-item { padding: 1rem 0; border-top: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-compact-item > span { color: var(--tech-blue, #7fa9ff); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.55rem; letter-spacing: 0.08em; }
+.technical-cv-compact-item p, .technical-cv-compact-item small { display: block; margin: 0.4rem 0 0; color: var(--tech-muted, #8d97a7); font-size: 0.76rem; line-height: 1.6; }
+.technical-cv-compact-item a { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.55rem; color: var(--tech-blue, #7fa9ff); font-size: 0.7rem; }
+.technical-cv-projects { border-top: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-projects article { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 2rem; padding: 1.2rem 0; border-bottom: 1px solid var(--tech-line, rgba(235,240,247,0.12)); }
+.technical-cv-projects p { margin: 0; color: var(--tech-muted, #8d97a7); font-size: 0.8rem; line-height: 1.7; }
+.technical-cv-footer { display: flex; justify-content: space-between; gap: 1rem; padding: 1.5rem 0; color: var(--tech-faint, #596273); font-size: 0.55rem; }
+
+@media (min-width: 1100px) {
+  .technical-ora-row-large, .technical-ora-row-small { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .technical-ora-row-large { display: contents; }
+  .technical-ora-row-small { display: contents; }
+  .technical-ora-gallery { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.8rem; }
+  .technical-ora-row a, .technical-ora-row-large a, .technical-ora-row-small a { grid-column: auto; aspect-ratio: 4 / 5; }
+}
+
+@media print {
+  .technical-cv-page { padding: 0; background: white; color: #111; }
+  .technical-cv-frame { width: 100%; }
+  .technical-cv-sheet { margin-top: 0; border-color: #bbb; }
+  .technical-cv-section, .technical-cv-two-section, .technical-cv-timeline article, .technical-cv-projects article { border-color: #d4d4d4; }
+  .technical-cv-section-label, .technical-cv-date, .technical-cv-footer, .technical-cv-compact-item p, .technical-cv-compact-item small, .technical-cv-timeline p, .technical-cv-projects p, .technical-cv-section-content > p, .technical-cv-skill-grid small { color: #555 !important; }
+  .technical-cv-name h2, .technical-cv-title, .technical-cv-timeline h4, .technical-cv-compact-item h4, .technical-cv-projects h4, .technical-cv-skill-grid strong { color: #111 !important; }
+  .technical-cv-portrait { border-color: #bbb; }
+}
+
+@media (max-width: 700px) {
+  .technical-cv-page { padding-top: 7.5rem; }
+  .technical-cv-toolbar { align-items: flex-start; flex-direction: column; }
+  .technical-cv-toolbar .cv-actions { width: 100%; }
+  .technical-cv-toolbar .cv-actions button { flex: 1 1 auto; }
+  .technical-cv-identity { grid-template-columns: 82px 1fr; gap: 1rem; }
+  .technical-cv-portrait { width: 82px; height: 105px; }
+  .technical-cv-index { display: none; }
+  .technical-cv-name h2 { font-size: clamp(1.8rem, 8vw, 3rem); }
+  .technical-cv-title { font-size: 0.72rem; line-height: 1.5; }
+  .technical-cv-contact { gap: 0.45rem 0.8rem; font-size: 0.5rem; }
+  .technical-cv-section { grid-template-columns: 1fr; gap: 1.1rem; padding: 1.8rem 0; }
+  .technical-cv-section-label { flex-direction: row; gap: 0.7rem; }
+  .technical-cv-skill-grid { grid-template-columns: 1fr 1fr; }
+  .technical-cv-two-section { grid-template-columns: 1fr; gap: 0; }
+  .technical-cv-two-section > .technical-cv-section { padding: 1.8rem 0; }
+  .technical-cv-projects article { grid-template-columns: 1fr; gap: 0.6rem; }
+  .technical-cv-timeline article { grid-template-columns: 1fr; gap: 0.45rem; }
+  .technical-cv-footer { align-items: flex-start; flex-direction: column; line-height: 1.6; }
+}
