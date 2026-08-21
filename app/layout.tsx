@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     template: "%s | Asem Portfolio",
-    default: "Asem | Full-Stack Developer Portfolio",
+    default: "Asem Al-Manari | IT Support, Networks & Mobile Development",
   },
   description:
     "Full-Stack Developer specializing in modern web technologies. View my projects, skills, and experience.",
@@ -37,7 +37,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

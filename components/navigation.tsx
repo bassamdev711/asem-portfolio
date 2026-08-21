@@ -22,7 +22,7 @@ const navLinks = [
   { href: "#education", label: "Education" },
   { href: "#certifications", label: "Certifications" },
   { href: "#projects", label: "Projects" },
-  { href: "#orasoft", label: "Aura Soft" },
+  { href: "#orasoft", label: "ORA Soft" },
   { href: "#services", label: "Services" },
   { href: "#contact", label: "Contact" },
 ];

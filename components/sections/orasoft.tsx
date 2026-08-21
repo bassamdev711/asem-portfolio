@@ -4,32 +4,32 @@ import { ArrowUpRight, ExternalLink, Sparkles } from "lucide-react";
 const companyImages = [
   {
     src: "/orasoft/website-importance-comparison.webp",
-    alt: "Aura Soft digital presence comparison",
+    alt: "ORA Soft digital presence comparison",
     className: "md:col-span-2 md:row-span-2",
   },
   {
     src: "/orasoft/brand-message.webp",
-    alt: "Aura Soft brand message and digital product visual",
+    alt: "ORA Soft brand message and digital product visual",
     className: "",
   },
   {
     src: "/orasoft/services-promo.webp",
-    alt: "Aura Soft web and mobile services visual",
+    alt: "ORA Soft web and mobile services visual",
     className: "",
   },
   {
     src: "/orasoft/phone-promo.webp",
-    alt: "Aura Soft mobile product experience",
+    alt: "ORA Soft mobile product experience",
     className: "",
   },
   {
     src: "/orasoft/laptop-hero.webp",
-    alt: "Aura Soft website shown on a laptop",
+    alt: "ORA Soft website shown on a laptop",
     className: "",
   },
   {
     src: "/orasoft/future-business.webp",
-    alt: "Aura Soft digital business visual",
+    alt: "ORA Soft digital business visual",
     className: "md:col-span-2",
   },
 ] as const;
@@ -45,24 +45,24 @@ export function OrasoftSection() {
               Founder-led company
             </div>
             <h2 className="section-title max-w-3xl">
-              Aura Soft <span className="text-primary">/ Orasoft</span>
+              ORA Soft
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-7 text-muted-foreground sm:text-right">
-            A software company founded and built by Asem Alhakim to turn ambitious ideas and daily operations into clear digital systems.
+            A software company founded and built by Asem Al-Manari to turn ambitious ideas and daily operations into clear digital systems.
           </p>
         </div>
 
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div className="space-y-6">
             <div className="surface surface-hover p-6 sm:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Asem Alhakim · Founder</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Asem Al-Manari · Founder</p>
               <h3 className="mt-4 text-2xl font-bold tracking-tight sm:text-3xl">
                 Building software with purpose.
               </h3>
               <div className="mt-5 space-y-4 text-sm leading-7 text-muted-foreground">
                 <p>
-                  Aura Soft is the software company founded and built by Asem Alhakim. It helps ambitious businesses turn ideas, products, and daily operations into clear digital systems that can launch, grow, and improve.
+                  ORA Soft is the software company founded and built by Asem Al-Manari. It helps ambitious businesses turn ideas, products, and daily operations into clear digital systems that can launch, grow, and improve.
                 </p>
                 <p className="font-medium text-foreground">
                   Product discovery · UX/UI · Web platforms · Mobile apps · Digital operations
@@ -75,7 +75,7 @@ export function OrasoftSection() {
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
                 >
-                  Visit Aura Soft <ExternalLink className="h-4 w-4" />
+                  Visit ORA Soft <ExternalLink className="h-4 w-4" />
                 </a>
                 <a
                   href="https://orasoft.vercel.app/work"

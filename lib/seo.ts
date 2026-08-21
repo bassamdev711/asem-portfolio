@@ -52,10 +52,10 @@ export function generatePersonSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Asem",
+    name: "Asem Al-Manari",
     jobTitle: "Full-Stack Developer",
     url: siteUrl,
-    email: "contact@asem.dev",
+    email: "hello@asem.dev",
     sameAs: [] as string[],
   };
 }
@@ -106,7 +106,7 @@ export function generateProjectSchema({
     image: image || `${siteUrl}/og-default.png`,
     author: {
       "@type": "Person",
-      name: "Asem",
+      name: "Asem Al-Manari",
     },
     dateCreated: startDate || undefined,
     dateModified: endDate || undefined,
