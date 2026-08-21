@@ -4,87 +4,151 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 220 18% 99%;
+    --foreground: 224 32% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 224 32% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
+    --popover-foreground: 224 32% 12%;
+    --primary: 252 83% 58%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
+    --secondary: 220 20% 93%;
+    --secondary-foreground: 224 32% 16%;
+    --muted: 220 20% 94%;
+    --muted-foreground: 220 16% 34%;
+    --accent: 262 80% 96%;
+    --accent-foreground: 252 68% 35%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.75rem;
+    --border: 220 16% 84%;
+    --input: 220 16% 84%;
+    --ring: 252 83% 58%;
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 228 28% 8%;
+    --foreground: 220 20% 96%;
+    --card: 228 25% 11%;
+    --card-foreground: 220 20% 96%;
+    --popover: 228 25% 11%;
+    --popover-foreground: 220 20% 96%;
+    --primary: 255 92% 72%;
+    --primary-foreground: 236 34% 12%;
+    --secondary: 228 20% 16%;
+    --secondary-foreground: 220 20% 96%;
+    --muted: 228 20% 14%;
+    --muted-foreground: 220 14% 66%;
+    --accent: 254 35% 20%;
+    --accent-foreground: 255 90% 82%;
+    --destructive: 0 62% 42%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --border: 228 18% 21%;
+    --input: 228 18% 21%;
+    --ring: 255 92% 72%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(circle at 8% 0%, hsl(var(--primary) / 0.035), transparent 24rem),
+      radial-gradient(circle at 96% 12%, hsl(190 85% 55% / 0.025), transparent 20rem);
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.22);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply relative py-24 lg:py-32;
+  }
+
+  .section-heading {
+    @apply mx-auto mb-14 max-w-2xl text-center;
+  }
+
+  .section-kicker {
+    @apply mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary;
+  }
+
+  .section-kicker::before {
+    content: "";
+    @apply h-px w-7 bg-primary/60;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl;
+  }
+
+  .section-description {
+    @apply mx-auto mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base;
+  }
+
+  .surface {
+    @apply rounded-2xl border bg-card/80 shadow-[0_20px_60px_-35px_hsl(var(--foreground)/0.35)] backdrop-blur-sm;
+  }
+
+  .surface-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_24px_70px_-35px_hsl(var(--primary)/0.5)];
+  }
+
+  .grid-fade {
+    background-image: linear-gradient(hsl(var(--border) / 0.45) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / 0.45) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: linear-gradient(to bottom, black, transparent 78%);
+    opacity: 0.45;
+  }
+
+  .soft-glow {
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.08), 0 0 80px hsl(var(--primary) / 0.1);
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+    @apply border border-white/20 bg-white/10 backdrop-blur-xl;
   }
 
   .glass-dark {
-    @apply bg-black/20 backdrop-blur-xl border border-white/10;
+    @apply border border-white/10 bg-black/20 backdrop-blur-xl;
   }
 
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
+    @apply border border-white/10 bg-white/5 shadow-xl backdrop-blur-lg;
   }
 
   .glass-card-hover {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-2xl;
+    @apply border border-white/10 bg-white/5 shadow-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-2xl;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-violet-400 to-cyan-400 bg-clip-text text-transparent;
   }
 
   .gradient-border {
-    @apply relative before:absolute before:inset-0 before:rounded-[inherit] before:bg-gradient-to-r before:from-brand-400 before:to-brand-600 before:p-[1px] before:content-[''];
+    @apply relative;
+  }
+
+  .gradient-border::before {
+    content: "";
+    @apply pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-r from-primary/70 via-violet-400/30 to-cyan-400/70 opacity-70;
+    z-index: -1;
   }
 
   .shimmer {
-    @apply bg-gradient-to-r from-transparent via-white/5 to-transparent bg-[length:200%_100%] animate-[shimmer_2s_infinite];
+    @apply animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent bg-[length:200%_100%];
   }
 
   .text-balance {
@@ -102,10 +166,15 @@
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

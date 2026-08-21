@@ -50,6 +50,7 @@ const navLinks = [
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
   { href: "#education", label: "Education" },
+  { href: "#certifications", label: "Certifications" },
   { href: "#projects", label: "Projects" },
   { href: "#services", label: "Services" },
   { href: "#contact", label: "Contact" },
@@ -65,24 +66,22 @@ export function Footer({ profile, socialLinks }: FooterProps) {
   };
 
   return (
-    <footer className="border-t bg-background">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+    <footer className="border-t bg-card/50">
+      <div className="container mx-auto px-4 py-14">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
           <div className="space-y-4">
-            <Link
-              href="/"
-              className="text-xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
-            >
-              {profile?.full_name || "Asem"}
+            <Link href="/" className="group inline-flex items-center gap-3">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">A</span>
+              <span className="text-lg font-bold">{profile?.full_name || "Asem"}<span className="text-primary">.</span></span>
             </Link>
-            <p className="text-sm text-muted-foreground max-w-xs">
+            <p className="mt-4 max-w-xs text-sm leading-7 text-muted-foreground">
               {profile?.professional_title || "Full-Stack Developer"} passionate about building exceptional digital experiences.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-semibold text-sm">Navigation</h4>
-            <nav className="grid grid-cols-2 gap-2">
+            <h4 className="text-sm font-semibold uppercase tracking-[0.16em]">Navigation</h4>
+            <nav className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
@@ -96,8 +95,9 @@ export function Footer({ profile, socialLinks }: FooterProps) {
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-semibold text-sm">Connect</h4>
-            <div className="flex gap-3">
+            <h4 className="text-sm font-semibold uppercase tracking-[0.16em]">Connect</h4>
+            <p className="mt-5 max-w-xs text-sm leading-6 text-muted-foreground">Find me online or send a message through the contact section.</p>
+            <div className="mt-5 flex flex-wrap gap-2">
               {socialLinks?.map((link) => {
                 const Icon = socialIcons[link.platform] || Github;
                 return (
@@ -106,7 +106,8 @@ export function Footer({ profile, socialLinks }: FooterProps) {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-9 w-9 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors"
+                    aria-label={link.platform}
+                    className="flex h-9 w-9 items-center justify-center rounded-xl border bg-background text-muted-foreground transition-all hover:-translate-y-1 hover:border-primary/35 hover:bg-primary/10 hover:text-primary"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
@@ -116,7 +117,7 @@ export function Footer({ profile, socialLinks }: FooterProps) {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-6 sm:flex-row">
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} {profile?.full_name || "Asem"}. All rights reserved.
           </p>
