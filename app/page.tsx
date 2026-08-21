@@ -6,6 +6,7 @@ import { ExperienceSection } from "@/components/sections/experience";
 import { EducationSection } from "@/components/sections/education";
 import { CertificationsSection } from "@/components/sections/certifications";
 import { ProjectsSection } from "@/components/sections/projects";
+import { OrasoftSection } from "@/components/sections/orasoft";
 import { ServicesSection } from "@/components/sections/services";
 import { ContactSection } from "@/components/sections/contact";
 import { Footer } from "@/components/footer";
@@ -65,6 +66,7 @@ export default async function HomePage() {
           <EducationSection education={education} />
           <CertificationsSection certifications={certifications} />
           <ProjectsSection projects={projects} />
+          <OrasoftSection />
           <ServicesSection services={services} />
           <ContactSection profile={profile} />
         </main>
