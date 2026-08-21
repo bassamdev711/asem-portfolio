@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Github, Linkedin, Twitter, Mail, Facebook, Instagram, Youtube, Globe, MessageCircle, Send, Sparkles, MapPin } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Twitter, Mail, Facebook, Instagram, Youtube, Globe, MessageCircle, Send, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -69,11 +69,6 @@ export function HeroSection({ profile, socialLinks }: HeroProps) {
       <div className="container relative z-10 mx-auto px-4">
         <motion.div variants={container} initial="hidden" animate="show" className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="max-w-3xl text-center lg:text-left">
-            <motion.div variants={item} className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
-              <Sparkles className="h-3.5 w-3.5" />
-              Available for meaningful digital products
-            </motion.div>
-
             <motion.p variants={item} className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-muted-foreground">
               Hello, I&apos;m
             </motion.p>
@@ -119,23 +114,12 @@ export function HeroSection({ profile, socialLinks }: HeroProps) {
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5 text-8xl font-black text-primary/40">{(profile?.full_name || "A").charAt(0)}</div>
                 )}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent p-6 pt-24 text-white">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Crafting with intention</p>
-                  <p className="mt-2 text-lg font-semibold">Designing systems people enjoy using.</p>
-                </div>
               </div>
             </div>
-            <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="surface absolute -bottom-5 -left-5 hidden items-center gap-3 px-4 py-3 sm:flex">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500"><span className="h-2.5 w-2.5 rounded-full bg-emerald-500" /></span>
-              <span><span className="block text-xs text-muted-foreground">Status</span><span className="text-sm font-semibold">Open to opportunities</span></span>
-            </motion.div>
           </motion.div>
         </motion.div>
       </div>
 
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground">
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="flex flex-col items-center gap-2"><span className="text-[10px] font-semibold uppercase tracking-[0.24em]">Scroll to explore</span><ArrowDown className="h-4 w-4" /></motion.div>
-      </motion.div>
     </section>
   );
 }
