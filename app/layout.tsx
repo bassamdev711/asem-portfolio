@@ -10,7 +10,10 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://asem-portfolio-nine.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     template: "%s | Asem Portfolio",
     default: "Asem | Full-Stack Developer Portfolio",

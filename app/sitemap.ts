@@ -1,51 +1,24 @@
 import type { MetadataRoute } from "next";
-import { createServiceSupabaseClient } from "@/lib/supabase/server";
+import { staticProjects } from "@/lib/static-data";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://asem-portfolio-nine.vercel.app";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
   const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/cv`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+    { url: siteUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${siteUrl}/projects`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${siteUrl}/cv`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ];
 
-  try {
-    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
-      return staticPages;
-    }
-
-    const supabase = await createServiceSupabaseClient();
-
-    const { data: projects } = await supabase
-      .from("projects")
-      .select("slug, updated_at")
-      .eq("is_published", true);
-
-    const projectPages: MetadataRoute.Sitemap = (projects ?? []).map((project) => ({
+  const projectPages: MetadataRoute.Sitemap = staticProjects
+    .filter((project) => project.is_published)
+    .map((project) => ({
       url: `${siteUrl}/projects/${project.slug}`,
-      lastModified: new Date(project.updated_at),
+      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     }));
 
-    return [...staticPages, ...projectPages];
-  } catch {
-    return staticPages;
-  }
+  return [...staticPages, ...projectPages];
 }

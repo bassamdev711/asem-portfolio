@@ -11,7 +11,7 @@ import {
   User,
   Star,
 } from "lucide-react";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { staticProjects } from "@/lib/static-data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,23 +22,19 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export function generateStaticParams() {
+  return staticProjects.map((project) => ({ slug: project.slug }));
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const supabase = await createServerSupabaseClient();
-
-  const { data: project } = await supabase
-    .from("projects")
-    .select("name, meta_title, meta_description, main_image")
-    .eq("slug", slug)
-    .eq("is_published", true)
-    .single();
+  const project = staticProjects.find((item) => item.slug === slug && item.is_published);
 
   if (!project) return { title: "Project Not Found" };
 
   return {
     title: project.meta_title || project.name,
-    description:
-      project.meta_description || `Case study for ${project.name}`,
+    description: project.meta_description || `Case study for ${project.name}`,
     openGraph: {
       title: project.meta_title || project.name,
       description: project.meta_description || "",
@@ -49,30 +45,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProjectDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const supabase = await createServerSupabaseClient();
-
-  const { data: project } = await supabase
-    .from("projects")
-    .select("*")
-    .eq("slug", slug)
-    .eq("is_published", true)
-    .single();
+  const project = staticProjects.find((item) => item.slug === slug && item.is_published);
 
   if (!project) notFound();
 
-  const { data: images } = await supabase
-    .from("project_images")
-    .select("*")
-    .eq("project_id", project.id)
-    .order("display_order");
-
-  const { data: relatedProjects } = await supabase
-    .from("projects")
-    .select("id, name, slug, short_description, main_image, technologies, category")
-    .eq("category", project.category)
-    .eq("is_published", true)
-    .neq("id", project.id)
-    .limit(3);
+  const images = project.gallery;
+  const relatedProjects = staticProjects
+    .filter((item) => item.is_published && item.category === project.category && item.id !== project.id)
+    .slice(0, 3);
 
   const jsonLd = generateProjectSchema({
     name: project.name,

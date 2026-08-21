@@ -36,10 +36,18 @@ export function ContactSection({ profile }: ContactProps) {
     if (data.website) return;
     setIsSubmitting(true);
     try {
-      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: data.name, email: data.email, subject: data.subject, message: data.message, phone: data.phone || null, company: data.company || null, service_interest: data.service_interest || null }) });
-      if (!res.ok) throw new Error("Failed to send message");
+      const body = [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        data.company ? `Company: ${data.company}` : "",
+        data.service_interest ? `Service: ${data.service_interest}` : "",
+        "",
+        data.message,
+      ].filter(Boolean).join("\\n");
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
       setIsSuccess(true);
-      toast.success("Message sent successfully! I'll get back to you soon.");
+      toast.success("Your email client is ready to send the message.");
       reset();
       setTimeout(() => setIsSuccess(false), 5000);
     } catch {

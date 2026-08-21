@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { staticCertifications, staticEducation, staticExperiences, staticProfile, staticProjects, staticSkills, staticSocialLinks } from "@/lib/static-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -22,48 +22,14 @@ export const metadata: Metadata = generatePageMetadata({
   path: "/cv",
 });
 
-export default async function CVPage() {
-  const supabase = await createServerSupabaseClient();
-
-  const [profileRes, skillsRes, experiencesRes, certificationsRes, educationRes, projectsRes, socialLinksRes] =
-    await Promise.all([
-      supabase.from("profiles").select("*").single(),
-      supabase.from("skills").select("*").eq("is_published", true).order("display_order"),
-      supabase
-        .from("experiences")
-        .select("*")
-        .eq("is_published", true)
-        .order("display_order"),
-      supabase
-        .from("certifications")
-        .select("*")
-        .eq("is_published", true)
-        .order("display_order"),
-      supabase
-        .from("education")
-        .select("*")
-        .eq("is_published", true)
-        .order("display_order"),
-      supabase
-        .from("projects")
-        .select("*")
-        .eq("is_published", true)
-        .eq("is_featured", true)
-        .order("display_order"),
-      supabase
-        .from("social_links")
-        .select("*")
-        .eq("is_published", true)
-        .order("display_order"),
-    ]);
-
-  const profile = profileRes.data;
-  const skills = skillsRes.data ?? [];
-  const experiences = experiencesRes.data ?? [];
-  const certifications = certificationsRes.data ?? [];
-  const education = educationRes.data ?? [];
-  const featuredProjects = projectsRes.data ?? [];
-  const socialLinks = socialLinksRes.data ?? [];
+export default function CVPage() {
+  const profile = staticProfile;
+  const skills = staticSkills;
+  const experiences = staticExperiences;
+  const certifications = staticCertifications;
+  const education = staticEducation;
+  const featuredProjects = staticProjects.filter((project) => project.is_featured);
+  const socialLinks = staticSocialLinks;
 
   const groupedSkills = skills.reduce(
     (acc: Record<string, typeof skills>, skill) => {
