@@ -31,7 +31,7 @@ export function TechnicalPortfolio() {
           <p className="technical-lead">{staticProfile.about}</p>
           <div className="technical-actions">
             <a href="#projects" className="technical-button technical-button-primary">Explore selected work <ArrowUpRight size={16} /></a>
-            <Link href="/cv" className="technical-button technical-button-light">View qualifications <ArrowUpRight size={16} /></Link>
+            <Link href="/cv" prefetch={false} className="technical-button technical-button-light">View qualifications <ArrowUpRight size={16} /></Link>
           </div>
           <div className="technical-proof">
             <div><strong>{staticProjects.length}</strong><span>selected builds</span></div>
@@ -128,7 +128,7 @@ function TechnicalProjectCard({ project, featured }: { project: (typeof staticPr
         {project.main_image ? <img src={project.main_image} alt={project.name} loading="lazy" decoding="async" /> : <div className="technical-project-placeholder"><span>{project.category}</span><strong>{project.name.slice(0, 2).toUpperCase()}</strong></div>}
         <div className="technical-project-label">{project.category} · {project.status}</div>
       </div>
-      <div className="technical-project-details"><div className="technical-project-topline"><span>{project.slug}</span><span>{String(project.display_order).padStart(2, "0")}</span></div><h3>{project.name}</h3><p className="technical-project-kicker">{project.short_description}</p><p className="technical-project-description">{project.description}</p><p className="technical-project-impact"><Check size={15} /> {project.results}</p><div className="technical-project-bottom"><div className="technical-tags">{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div><div className="technical-project-links"><Link href={`/projects/${project.slug}`} className="technical-text-link">Case study <ArrowUpRight size={15} /></Link>{project.live_url && <a href={project.live_url} target="_blank" rel="noreferrer" aria-label={`${project.name} live site`}><ExternalLink size={17} /></a>}</div></div></div>
+      <div className="technical-project-details"><div className="technical-project-topline"><span>{project.slug}</span><span>{String(project.display_order).padStart(2, "0")}</span></div><h3>{project.name}</h3><p className="technical-project-kicker">{project.short_description}</p><p className="technical-project-description">{project.description}</p><p className="technical-project-impact"><Check size={15} /> {project.results}</p><div className="technical-project-bottom"><div className="technical-tags">{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div><div className="technical-project-links"><Link href={`/projects/${project.slug}`} prefetch={false} className="technical-text-link">Case study <ArrowUpRight size={15} /></Link>{project.live_url && <a href={project.live_url} target="_blank" rel="noreferrer" aria-label={`${project.name} live site`}><ExternalLink size={17} /></a>}</div></div></div>
     </article>
   );
 }

@@ -22,13 +22,13 @@ export function TechnicalHeader() {
       </nav>
       <div className="technical-header-actions">
         <a href={`mailto:${staticProfile.email}`} className="technical-availability">Available for work</a>
-        <Link href="/cv" className="technical-cv-link">View CV <ArrowUpRight size={14} /></Link>
+        <Link href="/cv" prefetch={false} className="technical-cv-link">View CV <ArrowUpRight size={14} /></Link>
         <details className="technical-mobile-details">
           <summary className="technical-mobile-toggle" aria-label="Open navigation menu"><Menu className="technical-menu-open-icon" size={18} /><X className="technical-menu-close-icon" size={18} /></summary>
           <div className="technical-mobile-menu">
             <nav aria-label="Mobile navigation">
               {navLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}<ArrowUpRight size={15} /></Link>)}
-              <Link href="/cv">View CV <ArrowUpRight size={15} /></Link>
+              <Link href="/cv" prefetch={false}>View CV <ArrowUpRight size={15} /></Link>
             </nav>
           </div>
         </details>
