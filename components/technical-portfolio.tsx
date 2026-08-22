@@ -22,24 +22,6 @@ export function TechnicalPortfolio() {
   return (
     <main className="technical-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <header className="technical-header">
-        <a href="#home" className="technical-brand" aria-label="Asem Al-Manari home">
-          <span className="technical-brand-mark">AM</span>
-          <span>Asem Al-Manari<span className="technical-brand-slash">/</span></span>
-        </a>
-        <nav className="technical-nav" aria-label="Primary navigation">
-          <a href="#projects">Selected work</a>
-          <a href="#orasoft">ORA Soft</a>
-          <a href="#skills">Capabilities</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <div className="technical-header-actions">
-          <a href={`mailto:${staticProfile.email}`} className="technical-availability"><span className="technical-status-dot" /> Available for work</a>
-          <Link href="/cv" className="technical-cv-link">View CV <ArrowUpRight size={14} /></Link>
-        </div>
-      </header>
-
       <section id="home" className="technical-hero technical-frame">
         <div className="technical-hero-line" />
         <div className="technical-hero-copy">
@@ -135,7 +117,6 @@ export function TechnicalPortfolio() {
         <div className="technical-contact-panel"><div className="technical-contact-topline"><span>08 / Contact</span><span>Available for the right challenge</span></div><div className="technical-contact-content"><p className="technical-eyebrow"><span className="technical-eyebrow-line" /> Start a conversation</p><h2>Have a complex idea?<br /><span>Let&apos;s give it shape.</span></h2><p>Whether you need a practical digital product, a mobile experience, or technical support that brings clarity to the problem, I&apos;d be glad to hear what you&apos;re building.</p><a href={`mailto:${staticProfile.email}`} className="technical-button technical-button-light">{staticProfile.email} <ArrowUpRight size={17} /></a></div><div className="technical-contact-links"><a href={staticSocialLinks[0].url} target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a><a href={`mailto:${staticProfile.email}`}><Mail size={17} /> Email</a>{staticProfile.phone && <a href={`tel:${staticProfile.phone}`}><Phone size={17} /> {staticProfile.phone}</a>}<span><MapPin size={17} /> {staticProfile.location}</span></div></div>
       </section>
 
-      <footer className="technical-footer technical-frame"><span><b>AM</b> © {new Date().getFullYear()} Asem Al-Manari</span><span>Designed, engineered, and shipped with intent.</span><a href="#home">Back to top <ArrowUpRight size={15} /></a></footer>
     </main>
   );
 }
