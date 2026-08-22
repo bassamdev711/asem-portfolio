@@ -22,14 +22,13 @@ export function TechnicalHeader() {
       <header className="technical-header">
         <Link href="/" className="technical-brand" aria-label="Asem Al-Manari home" onClick={closeMenu}>
           <span className="technical-brand-avatar"><img src={staticProfile.profile_image} alt="" aria-hidden="true" /></span>
-          <span className="technical-brand-status" aria-label="Available for work" />
           <span>Asem Al-Manari<span className="technical-brand-slash">/</span></span>
         </Link>
         <nav className="technical-nav" aria-label="Primary navigation">
           {navLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
         </nav>
         <div className="technical-header-actions">
-          <a href={`mailto:${staticProfile.email}`} className="technical-availability"><span className="technical-status-dot" /> Available for work</a>
+          <a href={`mailto:${staticProfile.email}`} className="technical-availability">Available for work</a>
           <Link href="/cv" className="technical-cv-link">View CV <ArrowUpRight size={14} /></Link>
           <button type="button" className="technical-mobile-toggle" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen}>
             {menuOpen ? <X size={18} /> : <Menu size={18} />}

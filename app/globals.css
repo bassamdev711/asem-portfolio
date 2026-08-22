@@ -563,8 +563,3 @@
 @media (max-width: 760px) {
   .technical-brand-avatar { width: 30px; height: 30px; }
 }
-
-.technical-brand-status { display: block; flex: 0 0 auto; width: 7px; height: 7px; border-radius: 999px; background: #62e59c; box-shadow: 0 0 0 3px rgba(98,229,156,0.08), 0 0 12px rgba(98,229,156,0.72); }
-@media (max-width: 760px) {
-  .technical-brand-status { width: 6px; height: 6px; box-shadow: 0 0 0 2px rgba(98,229,156,0.08), 0 0 9px rgba(98,229,156,0.68); }
-}
