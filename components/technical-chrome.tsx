@@ -1,8 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { ArrowUpRight, Mail, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { staticProfile } from "@/lib/static-data";
 
 const navLinks = [
@@ -14,34 +11,29 @@ const navLinks = [
 ];
 
 export function TechnicalHeader() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const closeMenu = () => setMenuOpen(false);
-
   return (
-    <>
-      <header className="technical-header">
-        <Link href="/" className="technical-brand" aria-label="Asem Al-Manari home" onClick={closeMenu}>
-          <span className="technical-brand-avatar"><img src={staticProfile.profile_image} alt="" aria-hidden="true" /></span>
-          <span>Asem Al-Manari<span className="technical-brand-slash">/</span></span>
-        </Link>
-        <nav className="technical-nav" aria-label="Primary navigation">
-          {navLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
-        </nav>
-        <div className="technical-header-actions">
-          <a href={`mailto:${staticProfile.email}`} className="technical-availability">Available for work</a>
-          <Link href="/cv" className="technical-cv-link">View CV <ArrowUpRight size={14} /></Link>
-          <button type="button" className="technical-mobile-toggle" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen}>
-            {menuOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
-        </div>
-      </header>
-      <div className={`technical-mobile-menu ${menuOpen ? "is-open" : ""}`} aria-hidden={!menuOpen} inert={!menuOpen ? true : undefined}>
-        <nav aria-label="Mobile navigation">
-          {navLinks.map((link) => <Link key={link.href} href={link.href} onClick={closeMenu}>{link.label}<ArrowUpRight size={15} /></Link>)}
-          <Link href="/cv" onClick={closeMenu}>View CV <ArrowUpRight size={15} /></Link>
-        </nav>
+    <header className="technical-header">
+      <Link href="/" className="technical-brand" aria-label="Asem Al-Manari home">
+        <span className="technical-brand-avatar"><img src={staticProfile.profile_image} alt="" aria-hidden="true" /></span>
+        <span>Asem Al-Manari<span className="technical-brand-slash">/</span></span>
+      </Link>
+      <nav className="technical-nav" aria-label="Primary navigation">
+        {navLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+      </nav>
+      <div className="technical-header-actions">
+        <a href={`mailto:${staticProfile.email}`} className="technical-availability">Available for work</a>
+        <Link href="/cv" className="technical-cv-link">View CV <ArrowUpRight size={14} /></Link>
+        <details className="technical-mobile-details">
+          <summary className="technical-mobile-toggle" aria-label="Open navigation menu"><Menu className="technical-menu-open-icon" size={18} /><X className="technical-menu-close-icon" size={18} /></summary>
+          <div className="technical-mobile-menu">
+            <nav aria-label="Mobile navigation">
+              {navLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}<ArrowUpRight size={15} /></Link>)}
+              <Link href="/cv">View CV <ArrowUpRight size={15} /></Link>
+            </nav>
+          </div>
+        </details>
       </div>
-    </>
+    </header>
   );
 }
 
