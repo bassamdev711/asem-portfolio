@@ -11,9 +11,9 @@ const skillGroups = Array.from(new Set(staticSkills.map((skill) => skill.categor
 }));
 
 const capabilities = [
-  { number: "01", icon: Network, title: "Systems thinking", description: "Turning infrastructure, network, and product requirements into a clear technical direction." },
-  { number: "02", icon: Server, title: "Reliable delivery", description: "Building maintainable software with attention to operations, performance, and the details users depend on." },
-  { number: "03", icon: Smartphone, title: "Useful experiences", description: "Designing interfaces and mobile products that make complex work easier to understand and operate." },
+  { number: "01", icon: Server, title: "Product development", description: "Turning ideas into clear web products with sensible architecture, useful interfaces, and maintainable code." },
+  { number: "02", icon: Smartphone, title: "Mobile experiences", description: "Designing and building cross-platform applications that feel focused, reliable, and ready to grow." },
+  { number: "03", icon: Network, title: "Technical foundations", description: "Supporting the systems behind the product with practical troubleshooting and dependable technical decisions." },
 ] as const;
 
 export function TechnicalPortfolio() {
@@ -43,16 +43,16 @@ export function TechnicalPortfolio() {
       <section id="home" className="technical-hero technical-frame">
         <div className="technical-hero-line" />
         <div className="technical-hero-copy">
-          <p className="technical-eyebrow"><span className="technical-eyebrow-line" /> IT support · networks · mobile development</p>
-          <p className="technical-founder-note">Founder of ORA Soft <span>·</span> building practical digital systems</p>
-          <h1>I build systems<span>people can trust.</span></h1>
+          <p className="technical-eyebrow"><span className="technical-eyebrow-line" /> Web development · mobile products · technical systems</p>
+          <p className="technical-founder-note">Founder of ORA Soft <span>·</span> developing products with purpose</p>
+          <h1>I build products<span>people can use.</span></h1>
           <p className="technical-lead">{staticProfile.about}</p>
           <div className="technical-actions">
             <a href="#projects" className="technical-button technical-button-primary">Explore selected work <ArrowUpRight size={16} /></a>
             <Link href="/cv" className="technical-button technical-button-light">View qualifications <ArrowUpRight size={16} /></Link>
           </div>
           <div className="technical-proof">
-            <div><strong>{staticProjects.length}</strong><span>selected systems</span></div>
+            <div><strong>{staticProjects.length}</strong><span>selected builds</span></div>
             <div><strong>{staticSkills.length}</strong><span>technical skills</span></div>
             <div><strong>{staticExperiences.length}</strong><span>professional tracks</span></div>
           </div>
@@ -72,7 +72,7 @@ export function TechnicalPortfolio() {
           <h2>Useful technology should feel <em>clear.</em></h2>
           <div className="technical-copy">
             <p>{staticProfile.about}</p>
-            <p>My work sits between technical support, network operations, software development, and product thinking. I bring structure to the hard parts and keep the visible experience direct.</p>
+            <p>My work sits between software development, mobile products, technical support, and product thinking. I bring structure to the hard parts and keep the visible experience direct.</p>
             <a href="#contact" className="technical-text-link">Start a conversation <ArrowUpRight size={15} /></a>
           </div>
         </div>
@@ -82,7 +82,7 @@ export function TechnicalPortfolio() {
         <div className="technical-section-kicker"><span>02</span><span>Technical range</span></div>
         <div className="technical-heading-row">
           <div><p className="technical-eyebrow">The tools are only the beginning</p><h2>Depth across<br /><span>the whole build.</span></h2></div>
-          <p className="technical-section-intro">From infrastructure and troubleshooting to mobile applications and web products, I work across the layers that make technology useful.</p>
+          <p className="technical-section-intro">From web applications and mobile products to the technical foundations behind them, I work across the layers that make an idea useful.</p>
         </div>
         <div className="technical-capability-grid">
           {capabilities.map(({ number, icon: Icon, title, description }) => (
@@ -99,7 +99,7 @@ export function TechnicalPortfolio() {
 
       <section id="experience" className="technical-section technical-frame">
         <div className="technical-section-kicker"><span>03</span><span>Experience</span></div>
-        <div className="technical-heading-row technical-heading-border"><div><p className="technical-eyebrow">Work with a practical bias</p><h2>Experience that stays<br /><span>close to the problem.</span></h2></div><p className="technical-section-intro">A record of support, infrastructure, and development work shaped by real operational needs.</p></div>
+        <div className="technical-heading-row technical-heading-border"><div><p className="technical-eyebrow">Work with a practical bias</p><h2>Experience that stays<br /><span>close to the problem.</span></h2></div><p className="technical-section-intro">A record of development and technical support work shaped by real operational needs and useful outcomes.</p></div>
         <div className="technical-timeline">
           {staticExperiences.map((experience) => <article key={experience.id} className="technical-timeline-item"><div className="technical-timeline-date">{experience.start_date ? String(experience.start_date).slice(0, 4) : ""} — {experience.is_current ? "Present" : experience.end_date ? String(experience.end_date).slice(0, 4) : ""}</div><div><h3>{experience.job_title}</h3><p className="technical-timeline-company">{experience.company} · {experience.location}</p><p>{experience.description}</p><p className="technical-timeline-responsibilities">{experience.responsibilities}</p><div className="technical-tags">{experience.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div></div></article>)}
         </div>
@@ -127,12 +127,12 @@ export function TechnicalPortfolio() {
 
       <section id="services" className="technical-section technical-frame">
         <div className="technical-section-kicker"><span>07</span><span>Services</span></div>
-        <div className="technical-heading-row technical-heading-border"><div><p className="technical-eyebrow">How I can help</p><h2>Focused support for<br /><span>useful systems.</span></h2></div><p className="technical-section-intro">Support, networking, mobile development, and technical consultation for teams that care about dependable work.</p></div>
+        <div className="technical-heading-row technical-heading-border"><div><p className="technical-eyebrow">How I can help</p><h2>Focused support for<br /><span>useful systems.</span></h2></div><p className="technical-section-intro">Web development, mobile products, technical support, and practical consultation for people who want dependable work.</p></div>
         <div className="technical-services-grid">{staticServices.map((service, index) => <article key={service.id}><span className="technical-card-number">0{index + 1}</span><h3>{service.title}</h3><p>{service.description}</p><div className="technical-service-features">{service.features.split("\n").map((feature) => <span key={feature}><Check size={14} />{feature}</span>)}</div></article>)}</div>
       </section>
 
       <section id="contact" className="technical-section technical-frame technical-contact-section">
-        <div className="technical-contact-panel"><div className="technical-contact-topline"><span>08 / Contact</span><span>Available for the right challenge</span></div><div className="technical-contact-content"><p className="technical-eyebrow"><span className="technical-eyebrow-line" /> Start a conversation</p><h2>Have a complex idea?<br /><span>Let&apos;s give it shape.</span></h2><p>Whether you need reliable technical support, a stronger foundation, or a practical digital product, I&apos;d be glad to hear what you&apos;re building.</p><a href={`mailto:${staticProfile.email}`} className="technical-button technical-button-light">{staticProfile.email} <ArrowUpRight size={17} /></a></div><div className="technical-contact-links"><a href={staticSocialLinks[0].url} target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a><a href={`mailto:${staticProfile.email}`}><Mail size={17} /> Email</a>{staticProfile.phone && <a href={`tel:${staticProfile.phone}`}><Phone size={17} /> {staticProfile.phone}</a>}<span><MapPin size={17} /> {staticProfile.location}</span></div></div>
+        <div className="technical-contact-panel"><div className="technical-contact-topline"><span>08 / Contact</span><span>Available for the right challenge</span></div><div className="technical-contact-content"><p className="technical-eyebrow"><span className="technical-eyebrow-line" /> Start a conversation</p><h2>Have a complex idea?<br /><span>Let&apos;s give it shape.</span></h2><p>Whether you need a practical digital product, a mobile experience, or technical support that brings clarity to the problem, I&apos;d be glad to hear what you&apos;re building.</p><a href={`mailto:${staticProfile.email}`} className="technical-button technical-button-light">{staticProfile.email} <ArrowUpRight size={17} /></a></div><div className="technical-contact-links"><a href={staticSocialLinks[0].url} target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a><a href={`mailto:${staticProfile.email}`}><Mail size={17} /> Email</a>{staticProfile.phone && <a href={`tel:${staticProfile.phone}`}><Phone size={17} /> {staticProfile.phone}</a>}<span><MapPin size={17} /> {staticProfile.location}</span></div></div>
       </section>
 
       <footer className="technical-footer technical-frame"><span><b>AM</b> © {new Date().getFullYear()} Asem Al-Manari</span><span>Designed, engineered, and shipped with intent.</span><a href="#home">Back to top <ArrowUpRight size={15} /></a></footer>

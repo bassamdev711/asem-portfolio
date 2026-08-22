@@ -53,7 +53,7 @@ export function generatePersonSchema() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Asem Al-Manari",
-    jobTitle: "Full-Stack Developer",
+    jobTitle: "Software Developer & Mobile Developer",
     url: siteUrl,
     email: "hello@asem.dev",
     sameAs: [] as string[],

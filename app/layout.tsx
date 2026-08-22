@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     default: "Asem Al-Manari | IT Support, Networks & Mobile Development",
   },
   description:
-    "Full-Stack Developer specializing in modern web technologies. View my projects, skills, and experience.",
+    "Software and mobile developer building reliable digital products, practical tools, and clear technical experiences.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",

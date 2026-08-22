@@ -54,10 +54,10 @@ export type StaticProject = {
 export const profile: StaticProfile = {
   id: "asem-profile",
   full_name: "Asem Al-Manari",
-  professional_title: "IT Support Specialist · Network Engineer · Mobile Developer",
-  headline: "Building reliable systems and useful digital products.",
+  professional_title: "Software Developer · Mobile Developer · Technical Support",
+  headline: "Turning ideas into reliable digital products.",
   about:
-    "I am Asem Al-Manari, an IT support specialist, network engineer, and mobile developer focused on making technology dependable and useful. I combine infrastructure thinking with product development to build clear digital experiences, practical tools, and systems that solve real problems.",
+    "I am Asem Al-Manari, a software and mobile developer who turns ideas into reliable digital products. I also bring practical technical support experience, helping people and teams understand problems, choose sensible tools, and build systems that work in the real world.",
   location: "Available worldwide",
   email: "hello@asem.dev",
   phone: "",
@@ -78,28 +78,13 @@ export const skills = [
   { id: "flutter", name: "Flutter", category: "Mobile Development", description: "Cross-platform mobile applications", icon: "Smartphone", proficiency: 75, years_experience: 2 },
   { id: "node", name: "Node.js", category: "Programming", description: "Server-side JavaScript applications", icon: "Server", proficiency: 70, years_experience: 3 },
   { id: "postgresql", name: "PostgreSQL", category: "Databases", description: "Relational data modeling and queries", icon: "Database", proficiency: 70, years_experience: 3 },
-  { id: "linux", name: "Linux", category: "IT Support", description: "System administration and troubleshooting", icon: "Terminal", proficiency: 80, years_experience: 4 },
-  { id: "networking", name: "Networking", category: "Networking", description: "TCP/IP, DNS, DHCP, VPN, and diagnostics", icon: "Network", proficiency: 80, years_experience: 4 },
+  { id: "linux", name: "Linux", category: "Technical Foundations", description: "System administration and troubleshooting", icon: "Terminal", proficiency: 70, years_experience: 3 },
+  { id: "networking", name: "Basic Networking", category: "Technical Foundations", description: "Practical connectivity fundamentals and troubleshooting", icon: "Network", proficiency: 45, years_experience: 1 },
   { id: "git", name: "Git", category: "Tools", description: "Version control and collaborative workflows", icon: "GitBranch", proficiency: 85, years_experience: 4 },
   { id: "cybersecurity", name: "Cybersecurity", category: "Cybersecurity", description: "Security-minded infrastructure practices", icon: "Shield", proficiency: 60, years_experience: 2 },
 ];
 
 export const experiences = [
-  {
-    id: "experience-it-support",
-    job_title: "IT Support Specialist",
-    company: "Technology Operations",
-    location: "Remote",
-    employment_type: "Full-time",
-    start_date: "2022-01-01",
-    end_date: null,
-    is_current: true,
-    description: "Providing technical support, troubleshooting, and infrastructure maintenance for dependable day-to-day operations.",
-    responsibilities: "System support · Network troubleshooting · User assistance · Preventive maintenance",
-    technologies: ["Windows Server", "Networking", "Linux", "Active Directory"],
-    company_logo: "",
-    company_website: "",
-  },
   {
     id: "experience-mobile",
     job_title: "Freelance Mobile Developer",
@@ -112,6 +97,21 @@ export const experiences = [
     description: "Designing and developing cross-platform mobile applications with a focus on clear interfaces, maintainable code, and useful integrations.",
     responsibilities: "Mobile UI · API integration · Local persistence · Release preparation",
     technologies: ["Flutter", "Dart", "Firebase", "REST APIs"],
+    company_logo: "",
+    company_website: "",
+  },
+  {
+    id: "experience-it",
+    job_title: "IT Support Specialist",
+    company: "Technology Operations",
+    location: "Remote",
+    employment_type: "Full-time",
+    start_date: "2022-01-01",
+    end_date: null,
+    is_current: true,
+    description: "Providing technical support, troubleshooting, and infrastructure maintenance for dependable day-to-day operations.",
+    responsibilities: "System support · Technical troubleshooting · User assistance · Preventive maintenance",
+    technologies: ["Windows Server", "Troubleshooting", "Linux", "Active Directory"],
     company_logo: "",
     company_website: "",
   },
@@ -291,10 +291,10 @@ export const projects: StaticProject[] = [
 ];
 
 export const services = [
-  { id: "service-it", title: "IT Support", icon: "Headphones", short_description: "Professional technical support and troubleshooting", description: "Practical support for hardware, software, operating systems, and everyday technical issues.", features: "Remote support\nSystem maintenance\nUser assistance\nTroubleshooting" },
-  { id: "service-network", title: "Network Engineering", icon: "Network", short_description: "Network design, configuration, and optimization", description: "Reliable network foundations designed for performance, security, and maintainability.", features: "Network design\nVPN setup\nFirewall configuration\nPerformance optimization" },
   { id: "service-mobile", title: "Mobile App Development", icon: "Smartphone", short_description: "Cross-platform applications with Flutter", description: "Mobile products built with a practical focus on useful experiences, maintainable code, and integration readiness.", features: "UI implementation\nAPI integration\nLocal persistence\nRelease preparation" },
-  { id: "service-consulting", title: "Technical Consultation", icon: "MessageSquare", short_description: "Clear technology decisions for real requirements", description: "A second pair of eyes for product direction, infrastructure planning, security, and digital transformation.", features: "Technology assessment\nInfrastructure planning\nSecurity review\nDigital transformation" },
+  { id: "service-it", title: "IT Support", icon: "Headphones", short_description: "Professional technical support and troubleshooting", description: "Practical support for hardware, software, operating systems, and everyday technical issues.", features: "Remote support\nSystem maintenance\nUser assistance\nTroubleshooting" },
+  { id: "service-consulting", title: "Technical Consultation", icon: "MessageSquare", short_description: "Clear technology decisions for real requirements", description: "A second pair of eyes for product direction, software planning, security, and digital transformation.", features: "Technology assessment\nProduct direction\nSecurity review\nDigital transformation" },
+  { id: "service-network", title: "Network Support", icon: "Network", short_description: "Basic connectivity support and troubleshooting", description: "Practical help with connectivity, diagnostics, and everyday network issues as a supporting technical service.", features: "Connectivity checks\nBasic diagnostics\nDevice setup\nIssue isolation" },
 ];
 
 export const staticProfile = profile;
