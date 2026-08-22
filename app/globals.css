@@ -181,6 +181,18 @@
 }
 
 /* Technical editorial portfolio direction */
+:root {
+  --tech-bg: #091012;
+  --tech-surface: #0e1718;
+  --tech-surface-soft: #142021;
+  --tech-ink: #f0f3f7;
+  --tech-muted: #8d97a7;
+  --tech-faint: #596273;
+  --tech-line: rgba(235, 240, 247, 0.12);
+  --tech-line-strong: rgba(235, 240, 247, 0.22);
+  --tech-blue: #55d9be;
+  --tech-cyan: #8ef0d3;
+}
 .technical-shell {
   --tech-bg: #091012;
   --tech-surface: #0e1718;
