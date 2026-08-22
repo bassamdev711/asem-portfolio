@@ -563,3 +563,6 @@
 @media (max-width: 760px) {
   .technical-brand-avatar { width: 30px; height: 30px; }
 }
+
+/* The CV action is intentionally persistent across every viewport. */
+.technical-cv-link { display: inline-flex !important; visibility: visible !important; opacity: 1 !important; flex: 0 0 auto; }
