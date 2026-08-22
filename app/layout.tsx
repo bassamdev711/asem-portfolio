@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     template: "%s | Asem Portfolio",
-    default: "Asem Al-Manari | IT Support, Networks & Mobile Development",
+    default: "Asem Al-Manari | Software & Mobile Developer",
   },
   description:
     "Software and mobile developer building reliable digital products, practical tools, and clear technical experiences.",

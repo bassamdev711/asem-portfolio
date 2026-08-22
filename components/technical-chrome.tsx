@@ -22,6 +22,7 @@ export function TechnicalHeader() {
       <header className="technical-header">
         <Link href="/" className="technical-brand" aria-label="Asem Al-Manari home" onClick={closeMenu}>
           <span className="technical-brand-avatar"><img src={staticProfile.profile_image} alt="" aria-hidden="true" /></span>
+          <span className="technical-brand-status" aria-label="Available for work" />
           <span>Asem Al-Manari<span className="technical-brand-slash">/</span></span>
         </Link>
         <nav className="technical-nav" aria-label="Primary navigation">
@@ -35,7 +36,7 @@ export function TechnicalHeader() {
           </button>
         </div>
       </header>
-      <div className={`technical-mobile-menu ${menuOpen ? "is-open" : ""}`} aria-hidden={!menuOpen}>
+      <div className={`technical-mobile-menu ${menuOpen ? "is-open" : ""}`} aria-hidden={!menuOpen} inert={!menuOpen ? true : undefined}>
         <nav aria-label="Mobile navigation">
           {navLinks.map((link) => <Link key={link.href} href={link.href} onClick={closeMenu}>{link.label}<ArrowUpRight size={15} /></Link>)}
           <Link href="/cv" onClick={closeMenu}>View CV <ArrowUpRight size={15} /></Link>

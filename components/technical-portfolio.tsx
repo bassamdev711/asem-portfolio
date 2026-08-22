@@ -42,7 +42,7 @@ export function TechnicalPortfolio() {
         <div className="technical-portrait-wrap">
           <div className="technical-portrait-card">
             <div className="technical-portrait-meta"><span>ASEM AL-MANARI</span><span>SOFTWARE & SYSTEMS</span></div>
-            <div className="technical-portrait-image"><img src={staticProfile.profile_image} alt="Asem Al-Manari" /></div>
+            <div className="technical-portrait-image"><img src={staticProfile.profile_image} alt="Asem Al-Manari" width="460" height="460" fetchPriority="high" decoding="async" /></div>
             <div className="technical-portrait-footer"><span>{staticProfile.location}</span><span>ORA Soft · Founder</span></div>
           </div>
         </div>
@@ -104,7 +104,7 @@ export function TechnicalPortfolio() {
       <section id="orasoft" className="technical-section technical-frame technical-ora-section">
         <div className="technical-section-kicker"><span>06</span><span>Founder-led company</span></div>
         <div className="technical-heading-row technical-heading-border"><div><p className="technical-eyebrow">Asem Al-Manari · Founder</p><h2>ORA Soft —<br /><span>software with purpose.</span></h2></div><div className="technical-ora-copy"><p>ORA Soft helps ambitious businesses turn ideas, products, and daily operations into clear digital systems that can launch, grow, and improve.</p><p className="technical-ora-services">Product discovery · UX/UI · Web platforms · Mobile apps · Digital operations</p><div className="technical-actions"><a href="https://orasoft.vercel.app/" target="_blank" rel="noreferrer" className="technical-button technical-button-primary">Visit ORA Soft <ExternalLink size={15} /></a><a href="https://orasoft.vercel.app/work" target="_blank" rel="noreferrer" className="technical-button technical-button-outline">View company work <ArrowUpRight size={15} /></a></div></div></div>
-        <div className="technical-ora-gallery"><div className="technical-ora-row technical-ora-row-large">{["website-importance-comparison.webp", "brand-message.webp"].map((file) => <a key={file} href={`/orasoft/${file}`} target="_blank" rel="noreferrer"><img src={`/orasoft/${file}`} alt={`ORA Soft ${file.replace(".webp", "")}`} /></a>)}</div><div className="technical-ora-row technical-ora-row-small">{["services-promo.webp", "phone-promo.webp", "laptop-hero.webp", "future-business.webp"].map((file) => <a key={file} href={`/orasoft/${file}`} target="_blank" rel="noreferrer"><img src={`/orasoft/${file}`} alt={`ORA Soft ${file.replace(".webp", "")}`} /></a>)}</div></div>
+        <div className="technical-ora-gallery"><div className="technical-ora-row technical-ora-row-large">{["website-importance-comparison.webp", "brand-message.webp"].map((file) => <a key={file} href={`/orasoft/${file}`} target="_blank" rel="noreferrer"><img src={`/optimized/${file}`} alt={`ORA Soft ${file.replace(".webp", "")}`} loading="lazy" decoding="async" /></a>)}</div><div className="technical-ora-row technical-ora-row-small">{["services-promo.webp", "phone-promo.webp", "laptop-hero.webp", "future-business.webp"].map((file) => <a key={file} href={`/orasoft/${file}`} target="_blank" rel="noreferrer"><img src={`/optimized/${file}`} alt={`ORA Soft ${file.replace(".webp", "")}`} loading="lazy" decoding="async" /></a>)}</div></div>
       </section>
 
       <section id="services" className="technical-section technical-frame">
@@ -125,7 +125,7 @@ function TechnicalProjectCard({ project, featured }: { project: (typeof staticPr
   return (
     <article className={`technical-project-card ${featured ? "technical-project-featured" : ""}`}>
       <div className="technical-project-visual">
-        {project.main_image ? <img src={project.main_image} alt={project.name} /> : <div className="technical-project-placeholder"><span>{project.category}</span><strong>{project.name.slice(0, 2).toUpperCase()}</strong></div>}
+        {project.main_image ? <img src={project.main_image} alt={project.name} loading="lazy" decoding="async" /> : <div className="technical-project-placeholder"><span>{project.category}</span><strong>{project.name.slice(0, 2).toUpperCase()}</strong></div>}
         <div className="technical-project-label">{project.category} · {project.status}</div>
       </div>
       <div className="technical-project-details"><div className="technical-project-topline"><span>{project.slug}</span><span>{String(project.display_order).padStart(2, "0")}</span></div><h3>{project.name}</h3><p className="technical-project-kicker">{project.short_description}</p><p className="technical-project-description">{project.description}</p><p className="technical-project-impact"><Check size={15} /> {project.results}</p><div className="technical-project-bottom"><div className="technical-tags">{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div><div className="technical-project-links"><Link href={`/projects/${project.slug}`} className="technical-text-link">Case study <ArrowUpRight size={15} /></Link>{project.live_url && <a href={project.live_url} target="_blank" rel="noreferrer" aria-label={`${project.name} live site`}><ExternalLink size={17} /></a>}</div></div></div>
