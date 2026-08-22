@@ -547,3 +547,13 @@
   .technical-cv-link svg { display: none; }
   .technical-header-actions { gap: 0.4rem; }
 }
+
+.technical-cv-headline { margin: -0.35rem 0 0.9rem; color: var(--tech-blue, #55d9be); font-size: 0.78rem; line-height: 1.5; }
+.technical-cv-project-role { color: var(--tech-ink, #f0f3f7) !important; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.68rem !important; line-height: 1.65 !important; }
+@media print {
+  .technical-header, .technical-footer, .technical-mobile-menu { display: none !important; }
+  #top { margin: 0 !important; }
+}
+@media (max-width: 700px) {
+  .technical-cv-headline { font-size: 0.66rem; }
+}
