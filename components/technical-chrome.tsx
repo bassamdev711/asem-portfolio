@@ -21,7 +21,7 @@ export function TechnicalHeader() {
     <>
       <header className="technical-header">
         <Link href="/" className="technical-brand" aria-label="Asem Al-Manari home" onClick={closeMenu}>
-          <span className="technical-brand-mark">AM</span>
+          <span className="technical-brand-avatar"><img src={staticProfile.profile_image} alt="" aria-hidden="true" /></span>
           <span>Asem Al-Manari<span className="technical-brand-slash">/</span></span>
         </Link>
         <nav className="technical-nav" aria-label="Primary navigation">
